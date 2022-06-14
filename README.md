@@ -58,7 +58,8 @@ Do MIP (maximum intensity projection) along every axis and reshape all the MIP r
 | argument | type | description |
 | - | - | - |
 | ifnan | scalar | If the correlation score is NaN, replace NaN with input value |
+| merge | boolean | If False, returns 3 individual score. If True, returns mean value of scores.|
 
-Returns: list of correlation coefficient score of every MIP.
+Returns: correlation coefficient score of every MIP (3 individual score / mean value).
 
 ![Method: OverlapMIPCC](img3.png)
