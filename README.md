@@ -51,7 +51,7 @@ Returns: correlation coefficient score of overlap area.
 
 ![Method: OverlapCC](img2.png)
 
-`OverlapCorrelation.OverlapCorrcoef.OverlapMIPCC(ifnan=np.nan)`
+`OverlapCorrelation.OverlapCorrcoef.OverlapMIPCC(ifnan=np.nan, merge=True)`
 
 Do MIP (maximum intensity projection) along every axis and reshape all the MIP result in to 1D array, calculate the correlation coefficient score.
 
