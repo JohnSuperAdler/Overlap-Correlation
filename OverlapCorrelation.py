@@ -36,14 +36,17 @@ class OverlapCorr:
         return PC
     
     # MIP (maximum intensity projection) correlation
-    def OverlapMIPCC(self, ifnan=np.nan):
-        PC_li = []
-        for dim in range(len(np.shape(self.overlap_mx_1))):
+    def OverlapMIPCC(self, ifnan=np.nan, merge=True):
+        PC_ar = np.full((self.overlap_mx_1.ndim), np.nan)
+        for dim in range(self.overlap_mx_1.ndim):
             overlap_mx_1_1d = np.amax(self.overlap_mx_1, axis=dim).reshape(-1)
             overlap_mx_2_1d = np.amax(self.overlap_mx_2, axis=dim).reshape(-1)
             temp_PC = np.corrcoef(overlap_mx_1_1d, overlap_mx_2_1d)[0][1]
             if np.isnan(temp_PC):
                 temp_PC = ifnan
-            PC_li.append(temp_PC)
-        PC = np.mean(PC_li)
-        return PC_li
+            PC_ar[dim] = temp_PC
+        if merge:
+            PC = np.nanmean(PC_ar)
+            return PC
+        else:
+            return PC_ar
