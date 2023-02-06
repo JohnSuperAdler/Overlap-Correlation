@@ -17,7 +17,7 @@ class OverlapCorr:
         self.shape_mx_2 = np.array(np.shape(self.mx_2))
         # Get slice interval of overlap area
         from_1 = ReLU(  self.position_diff) - ReLU(  self.position_diff - self.shape_mx_1)
-        from_2 = ReLU(- self.position_diff) - ReLU(- self.position_diff - self.shape_mx_1)
+        from_2 = ReLU(- self.position_diff) - ReLU(- self.position_diff - self.shape_mx_2)
         to_1   = ReLU(self.shape_mx_1                      - ReLU(self.shape_mx_1 - self.shape_mx_2 - self.position_diff))
         to_2   = ReLU(self.shape_mx_1 - self.position_diff - ReLU(self.shape_mx_1 - self.shape_mx_2 - self.position_diff))
         # Slice input matrices
